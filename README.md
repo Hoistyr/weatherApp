@@ -1,0 +1,1 @@
+This is a weather app created while going through The Odin Project
