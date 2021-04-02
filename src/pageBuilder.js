@@ -2,23 +2,25 @@ import { format } from 'date-fns';
 
 const buildSearchBar = () => {
   const content = document.querySelector('#content');
+  const infoDiv = document.querySelector('#infoDiv');
   const searchBarHolder = document.createElement('div');
   searchBarHolder.id = "searchBarHolder";
-  content.appendChild(searchBarHolder);
+  content.insertBefore(searchBarHolder, infoDiv);
+  
 
   const searchBar = document.createElement('input');
   searchBar.id = 'searchBar';
   searchBar.type = 'search';
   searchBar.defaultValue = 'Search City';
-
   searchBarHolder.appendChild(searchBar);
+  
 }
 
 const buildClock = (initialTime) => {
-  const content = document.querySelector('#content');
+  const infoDiv = document.querySelector('#infoDiv');
   const clockHolder = document.createElement('div');
   clockHolder.id = 'clockHolder';
-  content.appendChild(clockHolder);
+  infoDiv.appendChild(clockHolder);
 
   const clock = document.createElement('div');
   clock.id = 'clock';
