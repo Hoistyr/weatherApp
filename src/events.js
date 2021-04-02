@@ -1,5 +1,5 @@
-import weatherData from './weatherData';
 import wd from './weatherData';
+import page from './pageBuilder';
 
 const mainEvents = (() => {
   const clearSearchBar = () => {
@@ -24,14 +24,20 @@ const mainEvents = (() => {
     return weatherData;
   }
 
-  const checkSearchKey = (event) => {
+  const checkSearchKey = async(event) => {
     const searchBar = document.querySelector('#searchBar');
     const searchText = searchBar.value;
     console.log('in check key');
     if (event.key === 'Enter') {
-      console.log('enter key');
-      const weatherData = getWeatherData(searchText);
-      console.log(weatherData);
+      try {
+        console.log('enter key');
+        const weatherData = await getWeatherData(searchText);
+        page.buildInfoDiv(weatherData);
+        console.log(weatherData);
+      } catch (err) {
+        console.log(err);
+      }
+      
     }
   }
 

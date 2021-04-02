@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import weatherData from './weatherData';
 
 const buildSearchBar = () => {
   const content = document.querySelector('#content');
@@ -58,7 +59,7 @@ const buildClock = (initialTime) => {
     clockMinute.textContent = format((new Date), ':mm');
     clockSecond.textContent = format((new Date), ':ss aa');
   }
-  setInterval(updateTime, 10);
+  // setInterval(updateTime, 10);
 }
 
 const setBackgroundColor = (hour) => {
@@ -90,6 +91,51 @@ const setBackgroundColor = (hour) => {
   }
 };
 
+const buildInfoStructure = (weatherData) => {
+  const clockHolder = document.querySelector('#clockHolder');
+  const infoDiv = document.querySelector('#infoDiv');
+  const infoHeader = document.createElement('div');
+  infoHeader.id = 'infoHeader';
+  infoDiv.insertBefore(infoHeader, clockHolder);
+
+  const cityNameTitle = document.createElement('div');
+  cityNameTitle.id ='cityNameTitle';
+  cityNameTitle.innerHTML = `
+  <p class='titleText'>What's the weather like in</p>
+  <p class='cityName titleText'>${weatherData.name}</p>`;
+  infoHeader.appendChild(cityNameTitle);
+}
+
+const buildWeatherContent = (weatherData) => {
+  const infoHeader = document.querySelector('#infoHeader');
+  const weatherDiv = document.createElement('div');
+  weatherDiv.id = 'weatherDiv';
+  infoHeader.appendChild(weatherDiv);
+
+  const currentTemp = document.createElement('h1');
+  currentTemp.classList.add('currentTemp');
+  currentTemp.textContent = `${Math.ceil(weatherData.main.temp)}\xB0`;
+  
+  const localDate = new Date();
+  const localTime = localDate.getTime();
+  const localOffset = localDate.getTimezoneOffset() * 60000;
+  console.log(localOffset);
+  const utc = localTime + localOffset;
+  console.log(utc);
+  const timezoneOffset = weatherData.timezone * 1000;
+  console.log(timezoneOffset);
+  const finalUTC = utc + timezoneOffset;
+  const locationDate = new Date(finalUTC);
+  console.log(locationDate);
+  console.log(format((locationDate), 'hh mm'));
+  weatherDiv.appendChild(currentTemp);
+}
+
+const buildInfoDiv = (weatherData) => {
+  buildInfoStructure(weatherData);
+  buildWeatherContent(weatherData);
+}
+
 const buildPageLayout = () => {
   setBackgroundColor();
   buildSearchBar();
@@ -102,4 +148,4 @@ const onPageLoad = (() => {
 
 })();
 
-export default { onPageLoad }
+export default { onPageLoad, buildInfoDiv }
