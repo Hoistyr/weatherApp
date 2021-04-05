@@ -1,7 +1,8 @@
-const getData = async(cityName, state, country) => {
+const getData = async({cityName, state, country, units}) => {
   try {
     console.log('in try');
-    const weatherResponse = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName},${state || ''},${country || ''}&units=imperial&id=524901&appid=APIKEY`, {mode: 'cors'});
+    console.log({cityName, state, country, units});
+    const weatherResponse = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName},${state || ''},${country || ''}&units=${units || 'imperial'}&id=API_KEY`, {mode: 'cors'});
 
     const weatherData = await weatherResponse.json();
     

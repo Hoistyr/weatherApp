@@ -17,11 +17,14 @@ html, body {
 
 #searchBarHolder {
   width: 100%;
+  height: 100px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
 }
 
-#searchBar {
+#searchBarDiv {
   color: white;
   height: 40px;
   border-radius: 25px;
@@ -29,8 +32,83 @@ html, body {
   background-color: transparent;
   border: solid 2px white;
   box-sizing: border-box;
-  padding-left: 20px;
-  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchBar {
+  color: inherit;
+  margin-left: 10px;
+  background-color: transparent;
+  border: none;
+}
+
+#searchBar:focus {
+  outline: none;
+}
+
+#searchIcon {
+
+}
+
+#tempTypeDiv {
+  display: flex;
+  margin-left: 25px;
+  background-color: transparent;
+  border: solid 2px white;
+  border-radius: 25px;
+  color:white;
+  font-family: inherit;
+  font-size: 0.8rem;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.tempType {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+
+
+.tempTypeSelected {
+  background-color: white;
+}
+
+
+
+#fahrenheitSelectorDiv {
+  width: 100%;
+  height: 100%;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#fahrenheitSelector {
+  margin-right: 14px;
+  margin-left: 10px;
+}
+
+#celsiusSelectorDiv {
+  width: 100%;
+  height: 100%;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#celsiusSelector {
+  margin-right: 12px;
+  margin-left: 10px;
 }
 
 #infoDiv {
@@ -52,6 +130,14 @@ html, body {
   align-items: center;
 }
 
+.tempTypeUnselected {
+  color: white;
+}
+
+.tempTypeUnselected:hover {
+  background-color: rgba(255, 255, 255, 0.158);
+}
+
 #cityNameTitle {
 }
 
@@ -70,11 +156,46 @@ html, body {
 
 #weatherDiv {
   margin-left: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.currentTemp {
-  font-size: 4rem;
+.tempText {
+  margin: 0px;
   padding: 0px;
+}
+
+.temperature {
+  font-size: 3rem;
+  padding: 0px;
+  margin: 0px;
+}
+
+#tempHighLowDiv {
+  display: flex;
+  margin-left: 20px;
+}
+
+#tempHighDiv {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#tempLowDiv {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#weatherTypeDiv {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.weatherTypeText {
   margin: 0px;
 }
 
